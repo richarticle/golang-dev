@@ -22,7 +22,12 @@ au FileType go nmap <leader>r <plug>(go-run)
 au FileType go nmap <leader>b <plug>(go-build)
 au FileType go nmap <leader>i <plug>(go-info)
 
-map <leader>n :NERDTreeTabsToggle<CR>
+au FileType go nmap <F1> <plug>(go-info)
+au FileType go nmap <F2> <plug>(go-def-tab)
+au FileType go nmap <F3> :GoReferrers<CR>
+nmap <leader>n :NERDTreeTabsToggle<CR>
+
+let g:go_bin_path = "/root/vimgobin"
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
