@@ -19,17 +19,17 @@ If you want to mount the volume of Go source code
 
 # Commands
 In this vim configuration, comma (,) is the <Leader> key.
-- ,<n>: Go to tab n
-- ,b: Go build
-- ,r: Go run
-- ,n: Toggle NERDTreeTabs
-- <C-x><C-o>: Autocompletion
-- ,<space>: No highlight
-- <F1>|,i: Show information of variables, functions, etc.
-- <F2>|,d: Go to definition
-- <F3>: GoReferrers
-- <F5>: Previous tab
-- <F6>: Next tab
-- <F12>: Toggle paste mode
+- `,<n>`: Go to tab n
+- `,b`: Go build
+- `,r`: Go run
+- `,n`: Toggle NERDTreeTabs
+- `<C-x><C-o>`: Autocompletion
+- `,<space>`: No highlight
+- `<F1>|,i`: Show information of variables, functions, etc.
+- `<F2>|,d`: Go to definition
+- `<F3>`: GoReferrers
+- `<F5>`: Previous tab
+- `<F6>`: Next tab
+- `<F12>`: Toggle paste mode
 
 Please refer to https://github.com/fatih/vim-go/wiki/Usage for more information.
