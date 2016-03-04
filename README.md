@@ -5,7 +5,7 @@ This is a container for Go language development. The following features are incl
 - VIM is installed with customized .vimrc
 - VIM-GO plugin is installed
 - NERDTreeTabs plugin is installed for VIM
-- Go 1.5.3 is installed
+- Go 1.6 is installed
 - Automatically goimports on saving files
 
 # Running the Container
@@ -18,7 +18,7 @@ If you want to mount the volume of Go source code
     docker run -it --name golang --net host --log-driver none -v /home/user/go:/go richarticle/golang-dev
 
 # Commands
-In this vim configuration, comma (,) is the <Leader> key.
+In this vim configuration, comma (,) is the leader key.
 - `,<n>`: Go to tab n
 - `,b`: Go build
 - `,r`: Go run
