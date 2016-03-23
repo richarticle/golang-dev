@@ -44,6 +44,7 @@ set bg=dark
 set tabstop=4
 set shiftwidth=4
 set ai
+set encoding=utf-8
 
 " map F5~F12
 nmap <F5> :tabp<CR>
