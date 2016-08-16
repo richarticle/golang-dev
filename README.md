@@ -1,7 +1,6 @@
 # Golang Development Environment
 This is a container for Go language development. The following features are included
 - Centos7 is the base image
-- TMUX is installed for convenience with customized .tmux.conf
 - VIM is installed with customized .vimrc
 - VIM-GO plugin is installed
 - NERDTreeTabs plugin is installed for VIM
@@ -10,12 +9,19 @@ This is a container for Go language development. The following features are incl
 
 # Running the Container
 To run this container
+```
+docker run -it --name golang --net host --log-driver none richarticle/golang-dev
+```
 
-    docker run -it --name golang --net host --log-driver none richarticle/golang-dev
-    
 If you want to mount the volume of Go source code
+```
+docker run -it --name golang --net host --log-driver none -v /home/user/go:/go richarticle/golang-dev
+```
 
-    docker run -it --name golang --net host --log-driver none -v /home/user/go:/go richarticle/golang-dev
+Run the following command to get all required binaries for vim.
+```
+vim +GoInstallBinaries +qall
+```
 
 # Commands
 In this vim configuration, comma (,) is the leader key.
