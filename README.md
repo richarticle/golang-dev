@@ -4,7 +4,7 @@ This is a container for Go language development. The following features are incl
 - VIM is installed with customized .vimrc
 - VIM-GO plugin is installed
 - NERDTreeTabs plugin is installed for VIM
-- Go 1.7 is installed
+- Go 1.7.4 is installed
 - Automatically goimports on saving files
 
 # Running the Container
