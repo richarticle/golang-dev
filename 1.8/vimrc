@@ -1,0 +1,136 @@
+let mapleader = ","
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'fatih/vim-go'
+Plugin 'scrooloose/nerdTree'
+Plugin 'jistr/vim-nerdtree-tabs'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+au FileType go nmap <leader>d <plug>(go-def-tab)
+au FileType go nmap <leader>r <plug>(go-run)
+au FileType go nmap <leader>b <plug>(go-build)
+au FileType go nmap <leader>i <plug>(go-info)
+
+au FileType go nmap <F1> <plug>(go-info)
+au FileType go nmap <F2> <plug>(go-def-tab)
+au FileType go nmap <F3> :GoReferrers<CR>
+nmap <leader>n :NERDTreeTabsToggle<CR>
+
+let g:go_bin_path = "/root/vimgobin"
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+let g:go_fmt_command = "goimports"
+
+" set configuration
+set nu
+set bg=dark
+set tabstop=4
+set shiftwidth=4
+set ai
+set encoding=utf-8
+
+" map F5~F12
+nmap <F5> :tabp<CR>
+nmap <F6> :tabn<CR>
+nmap <F10> :tabnew<CR>
+set pastetoggle=<F12>
+
+" map keys
+map <leader><space> :noh<cr>
+
+map <leader>1 :tabn 1<CR>
+map <leader>2 :tabn 2<CR>
+map <leader>3 :tabn 3<CR>
+map <leader>4 :tabn 4<CR>
+map <leader>5 :tabn 5<CR>
+map <leader>6 :tabn 6<CR>
+map <leader>7 :tabn 7<CR>
+map <leader>8 :tabn 8<CR>
+map <leader>9 :tabn 9<CR>
+
+" show status line
+set laststatus=2
+" Format the statusline
+"set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L\ \ Column:\ %c
+set statusline=%1*\ %F%m%r%h\ %w\ \ \ \ \ \ Line:\ %l/%L\ \ Column:\ %c
+
+"function! CurDir()
+"    let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")
+"    return curdir
+"endfunction
+
+hi User1 ctermfg=black ctermbg=gray
+
+hi TabLineFill ctermfg=Gray ctermbg=Gray
+hi TabLine term=bold cterm=bold ctermfg=Black ctermbg=Gray
+hi TabLineSel term=bold cterm=bold ctermfg=White ctermbg=Black
+
+" show tab number
+set tabline=%!MyTabLine()
+function! MyTabLine()
+    let s = ''
+    " loop through each tab page
+    for t in range(tabpagenr('$'))
+        " set highlight
+        if t + 1 == tabpagenr()
+            let s .= '%#TabLineSel#'
+        else
+            let s .= '%#TabLine#'
+        endif
+        " set the tab page number (for mouse clicks)
+        let s .= '%' . (t + 1) . 'T'
+        let s .= ' '
+        " set page number string
+        let s .= t + 1 . '.'
+
+        " get buffer statuses
+        let buflist = tabpagebuflist(t + 1)
+        let winnr = tabpagewinnr(t + 1)
+        let b = buflist[winnr - 1]
+        if getbufvar( b, "&modified" )
+            let s .= '[+]'
+        endif
+
+        if t + 1 == tabpagenr()
+            let s .= '%#TabLineSel#'
+        else
+            let s .= '%#TabLine#'
+        endif
+
+        " add buffer names
+        let n = fnamemodify( bufname(b), ':t' )
+        if n == ''
+            let s.= '[New]'
+        else
+            let s .= '[' . n . ']'
+        endif
+
+        " switch to no underlining and add final space to buffer list
+        let s .= ' '
+    endfor
+    " after the last tab fill with TabLineFill and reset tab page nr
+    let s .= '%#TabLineFill#%T'
+    " right-align the label to close the current tab page
+    if tabpagenr('$') > 1
+        let s .= '%=%#TabLineFill#%999Xclose'
+    endif
+    return s
+endfunction
+<
